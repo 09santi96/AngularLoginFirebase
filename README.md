@@ -2,7 +2,9 @@
 
 ## ♥♥ Hi visitors ♥♥
 This project is created in Angular 16, uses Firebase Authentication, Firebase Firestore and Firebase Hosting.
-was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.3.
+Using Material UI and PrimeNg UI for front style
+Was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.3.
+
 
 ## Development server
 
