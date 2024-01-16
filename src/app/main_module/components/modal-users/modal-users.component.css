@@ -1,0 +1,43 @@
+.title-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  background-color: #673ab7;
+  box-shadow: 0 0 6px #673ab7; 
+  -webkit-box-shadow: 0 0 6px #673ab7; 
+  border-radius: 5px;
+  margin: 1.5rem 1rem;
+}
+.title-container h1{
+  font-size: 1.5rem;
+  margin:1rem;
+  color:white;
+}
+.user-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+
+}
+mat-dialog-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+mat-dialog-content .closeButton{
+  position: absolute;
+  top: 5px;
+  right: 15px;
+}
+.inputs-width {
+  width: 80%;
+  margin: 0.5rem 1rem;
+}
+
+:host ::ng-deep .custom-spinner circle{   
+  stroke: #0CC20C;
+}

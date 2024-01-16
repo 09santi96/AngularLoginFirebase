@@ -1,0 +1,59 @@
+<section class="section-profile">
+
+   
+    <div class="loading-shade" *ngIf="isLoadingResults">
+        <mat-spinner></mat-spinner>
+    </div>
+
+    <mat-card class="card-profile" *ngFor="let user of users$ | async">
+        
+        <mat-card-header>
+        <div mat-card-avatar class="header-image">
+            <button (click)="SetImgProfile()">
+                <img src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="imagen perfil">
+            </button>
+        </div>
+        <mat-card-title>{{user.names}}</mat-card-title>
+        <mat-card-subtitle>
+            <span *ngIf="user.perfil == 0">Administrador</span>
+            <span *ngIf="user.perfil == 1">Secretaría</span>
+            <span *ngIf="user.perfil == 2">Veterinario</span>
+        </mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+            <div>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Cuil/Cuit</mat-label>
+                    <input matInput placeholder="Ex. Pizza" value="{{user.cuil}}">
+                  </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Mail</mat-label>
+                    <input matInput placeholder="Ex. Pizza" value="{{user.email}}">
+                </mat-form-field>
+                
+                <mat-form-field class="login-full-width mt-2">
+                    <mat-label>Contraseña</mat-label>
+                    <input type="password" matInput [type]="hide ? 'password' : 'text'" value="{{user.password}}">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'ocultar contraseña'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+            </div>
+        </mat-card-content>
+
+        <mat-card-actions>
+            <button mat-raised-button color="primary">Guardar cambios</button>
+        </mat-card-actions>
+
+  </mat-card>
+</section>
+<!-- <section>
+    <h1>User Profiles</h1>
+    <ul>
+        <li *ngFor="let user of users$ | async">
+            {{user | json}}
+        </li>
+    </ul>
+</section> -->

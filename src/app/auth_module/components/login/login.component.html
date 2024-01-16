@@ -1,0 +1,62 @@
+<section class="sectionLogin">
+<div class="containerFlexColumCenter">
+    <img src="../../../assets/img/logo.png" alt="Logo">
+    <h1>Colegio Medico Veterinario</h1>
+</div>
+
+<mat-card class="card-login">
+    <mat-card-content>
+
+
+<form class="login-form containerInputs" [formGroup]="formLogin">
+    <h2>Inicio de sesion</h2>
+
+    <mat-form-field class="login-full-width">
+        <mat-label>Mail</mat-label>
+
+        <input type="email" matInput formControlName="email" [errorStateMatcher]="matcher" placeholder="example@example.com">
+        <mat-icon matSuffix>email</mat-icon>
+        <mat-hint>Ingrese el mail</mat-hint>
+
+        <mat-error *ngIf="formLogin.get('email')?.hasError('email') && !formLogin.get('email')?.hasError('required')">
+            Porfavor ingrese un mail valido.
+        </mat-error>
+        <mat-error *ngIf="formLogin.get('email')?.hasError('required')">
+            El mail es <strong>requerido</strong>
+        </mat-error>
+       
+    </mat-form-field>
+
+    <mat-form-field class="login-full-width mt-2">
+        <mat-label>Contraseña</mat-label>
+
+        <input type="password" matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'ocultar contraseña'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+
+        <mat-hint>Ingrese la contraseña</mat-hint>
+
+        <mat-error *ngIf="formLogin.get('password')?.hasError('required')">
+            La contraseña es <strong>requerida</strong>
+        </mat-error>
+
+    </mat-form-field>
+
+    <div class="col-lg-12 text-end">
+        <p class="forgot-password"> <a [routerLink]="['/forgot-password']">¿Olvidaste tu contraseña?</a></p>
+    </div>
+    <div class="mt-4">
+        <button mat-raised-button color="primary" [disabled]="formLogin.invalid" (click)="onSubmit()">
+            <span *ngIf="!isLoginUser">Iniciar sesion</span>
+            <mat-spinner class="custom-spinner" diameter="35" *ngIf="isLoginUser"></mat-spinner> 
+        </button>
+    </div>
+
+
+</form>
+<!-- <button class="btn btn-info" (click)="onClick()">Login With Google</button> -->
+
+</mat-card-content>
+</mat-card>
+</section>

@@ -1,0 +1,78 @@
+
+
+<section class="panel">
+    <span class="icon-spacer">
+      <mat-icon>supervisor_account</mat-icon>
+    </span>
+
+    <span>Administrador de perfiles</span>
+
+    <div class="button-row">
+
+      <button mat-fab extended color="primary" (click)="accordion.openAll()">
+        <mat-icon>expand_more</mat-icon>
+        Expandir Todos
+      </button>
+      &nbsp;
+      <button mat-fab extended color="primary" (click)="accordion.closeAll()">
+        <mat-icon>expand_less</mat-icon>
+        Colapsar Todos
+      </button>
+
+    </div>
+</section>
+
+  <mat-accordion class="headers-align" multi>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Administrador
+        </mat-panel-title>
+        <mat-panel-description>
+          Perfil de administrador
+          <mat-icon>settings</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+  
+      <mat-form-field>
+        <mat-label>First name</mat-label>
+        <mat-slide-toggle>Slide me!</mat-slide-toggle>
+      </mat-form-field>
+       
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Secretaría
+        </mat-panel-title>
+        <mat-panel-description>
+            Perfil de secretaría
+          <mat-icon>settings</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+  
+      <mat-form-field>
+        <mat-label>Country</mat-label>
+        <input matInput>
+      </mat-form-field>
+    </mat-expansion-panel>
+  
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Veterinario
+        </mat-panel-title>
+        <mat-panel-description>
+          Perfil de veterinario
+          <mat-icon>settings</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+  
+      <mat-form-field>
+        <mat-label>Date</mat-label>
+        <input matInput [matDatepicker]="picker" (focus)="picker.open()" readonly>
+      </mat-form-field>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-expansion-panel>
+  </mat-accordion>
+  

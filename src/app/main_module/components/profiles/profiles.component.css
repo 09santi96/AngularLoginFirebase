@@ -1,0 +1,33 @@
+/*-------------panel head ------------------*/
+.panel{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    font-size: 2rem;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.5rem;
+    margin-bottom: 2rem;
+    border-radius:10px;
+  }
+  .panel span,
+  .panel .icon-spacer{
+    margin:1rem;
+  }
+  /*------------------------------------------*/
+
+
+.action-buttons {
+    padding-bottom: 20px;
+}
+
+.headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.headers-align .mat-mdc-form-field + .mat-mdc-form-field {
+    margin-left: 8px;
+}

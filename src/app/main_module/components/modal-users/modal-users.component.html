@@ -1,0 +1,91 @@
+<mat-dialog-content>
+
+    <div class="title-container">
+        <h1>{{data.title}}</h1>
+    </div>
+
+    <button class="closeButton" mat-icon-button (click)="closeModal()" aria-label="Cerrar dialogo de usuario">
+        <mat-icon>close</mat-icon>
+    </button>
+    <form class="user-form" [formGroup]="formUsers">
+
+        <mat-form-field class="inputs-width">
+            <!-- cuil -->
+            <mat-label>Cuil</mat-label>
+            <input type="text" matInput formControlName="cuil" [errorStateMatcher]="matcher" >
+            <mat-hint>Ingrese el Cuil o Cuit</mat-hint>
+
+            <mat-error  *ngIf="formUsers.get('cuil')?.errors?.['required']">
+                El Cuil/Cuit es <strong>requerido</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="inputs-width">
+            <!-- Nombre y Apellido -->
+            <mat-label>Nombre y Apellido</mat-label>
+            <input type="text" matInput formControlName="names" [errorStateMatcher]="matcher" >
+            <mat-hint>Ingrese el Nombre y Apellido</mat-hint>
+
+            <mat-error *ngIf="formUsers.get('names')?.hasError('required')">
+                El Nombre y Apellido es <strong>requerido</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="inputs-width">
+            <!-- MAIL -->
+            <mat-label>Email</mat-label>
+            <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com" [errorStateMatcher]="matcher">
+            <mat-hint>Ingrese el mail</mat-hint>
+
+            <mat-error *ngIf="formUsers.get('email')?.hasError('email') && !formUsers.get('email')?.hasError('required')">
+                Porfavor ingrese un mail valido.
+            </mat-error>
+            <mat-error *ngIf="formUsers.get('email')?.hasError('required')">
+                El mail es <strong>requerido</strong>
+            </mat-error>
+
+        </mat-form-field>
+
+        <mat-form-field class="inputs-width">
+            <mat-label>Contraseña</mat-label>
+    
+            <input type="password" matInput [type]="hide ? 'password' : 'text'" formControlName="password" [errorStateMatcher]="matcher">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'ocultar contraseña'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+    
+            <mat-hint>Ingrese la contraseña</mat-hint>
+    
+            <mat-error *ngIf="formUsers.get('password')?.hasError('required')">
+                La contraseña es <strong>requerida</strong>
+            </mat-error>
+    
+        </mat-form-field>
+
+        <mat-form-field class="inputs-width">
+                <!-- PERFIL -->
+             <mat-select formControlName="perfil" [errorStateMatcher]="matcher" >
+                <mat-option *ngFor="let perfil of perfiles" [value]="perfil.value">
+                    {{perfil.viewValue}}
+                </mat-option>
+            </mat-select>
+            <mat-hint>Seleccione el perfil del usuario</mat-hint>
+
+            <mat-error *ngIf="formUsers.get('perfil')?.hasError('required')">
+                El perfil es <strong>requerido</strong>
+            </mat-error>
+
+        </mat-form-field>
+
+
+    <mat-dialog-actions class="mt-4">
+        <button mat-raised-button color="warn" (click)="closeModal()">Cancelar</button>
+        <button mat-raised-button color="primary" (click)="OnCreateUser()" [disabled]="formUsers.invalid" >
+            <span *ngIf="!isSavingNewUser">Guardar</span>
+            <mat-spinner class="custom-spinner" diameter="25" *ngIf="isSavingNewUser"></mat-spinner> 
+        </button>
+    </mat-dialog-actions>
+
+</form>
+
+</mat-dialog-content>
